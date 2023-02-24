@@ -147,7 +147,7 @@ class FindfriendsJudger:
         for i in more_than_3_indexes:
             cards = CARD_RANK_STR[i[0]] * 4
             playable_cards.add(cards)
-            for left, right in findfriendsJudger.solo_attachments(current_hand, i[0], 1, 2):
+            for left, right in FindfriendsJudger.solo_attachments(current_hand, i[0], 1, 2):
                 pre_attached = ''
                 for j in left:
                     pre_attached += CARD_RANK_STR[j]
@@ -155,7 +155,7 @@ class FindfriendsJudger:
                 for j in right:
                     post_attached += CARD_RANK_STR[j]
                 playable_cards.add(pre_attached + cards + post_attached)
-            for left, right in findfriendsJudger.pair_attachments(cards_count, i[0], 1, 2):
+            for left, right in FindfriendsJudger.pair_attachments(cards_count, i[0], 1, 2):
                 pre_attached = ''
                 for j in left:
                     pre_attached += CARD_RANK_STR[j] * 2
@@ -165,7 +165,7 @@ class FindfriendsJudger:
                 playable_cards.add(pre_attached + cards + post_attached)
 
         #solo_chain_5 -- #solo_chain_12
-        solo_chain_indexes = findfriendsJudger.chain_indexes(non_zero_indexes)
+        solo_chain_indexes = FindfriendsJudger.chain_indexes(non_zero_indexes)
         for (start_index, length) in solo_chain_indexes:
             s, l = start_index, length
             while(l >= 5):
@@ -182,7 +182,7 @@ class FindfriendsJudger:
                 s += 1
 
         #pair_chain_3 -- #pair_chain_10
-        pair_chain_indexes = findfriendsJudger.chain_indexes(more_than_1_indexes)
+        pair_chain_indexes = FindfriendsJudger.chain_indexes(more_than_1_indexes)
         for (start_index, length) in pair_chain_indexes:
             s, l = start_index, length
             while(l >= 3):
@@ -213,7 +213,7 @@ class FindfriendsJudger:
                     playable_cards.add(CARD_RANK_STR[i[0]] * 3 + CARD_RANK_STR[j[0]] * 2)
 
         #trio_solo, trio_pair, #trio -- trio_chain_2 -- trio_chain_6; trio_solo_chain_2 -- trio_solo_chain_5; trio_pair_chain_2 -- trio_pair_chain_4
-        trio_chain_indexes = findfriendsJudger.chain_indexes(more_than_2_indexes)
+        trio_chain_indexes = FindfriendsJudger.chain_indexes(more_than_2_indexes)
         for (start_index, length) in trio_chain_indexes:
             s, l = start_index, length
             while(l >= 2):
@@ -231,7 +231,7 @@ class FindfriendsJudger:
 
                     #trio_solo_chain_2 to trio_solo_chain_5
                     if (curr_length >= 2 and curr_length <= 5):
-                        for left, right in findfriendsJudger.solo_attachments(current_hand, s, curr_length, curr_length):
+                        for left, right in FindfriendsJudger.solo_attachments(current_hand, s, curr_length, curr_length):
                             pre_attached = ''
                             for j in left:
                                 pre_attached += CARD_RANK_STR[j]
@@ -242,7 +242,7 @@ class FindfriendsJudger:
 
                     #trio_pair_chain2 -- trio_pair_chain_4
                     if (curr_length >= 2 and curr_length <= 4):
-                        for left, right in findfriendsJudger.pair_attachments(cards_count, s, curr_length, curr_length):
+                        for left, right in FindfriendsJudger.pair_attachments(cards_count, s, curr_length, curr_length):
                             pre_attached = ''
                             for j in left:
                                 pre_attached += CARD_RANK_STR[j] * 2
