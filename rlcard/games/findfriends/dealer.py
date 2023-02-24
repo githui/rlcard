@@ -16,7 +16,7 @@ class FindfriendsDealer:
             1. deck with 54 cards including black joker and red joker
         '''
         self.np_random = np_random
-        self.deck = init_54_deck()
+        self.deck = init_54_deck()*3
         self.deck.sort(key=functools.cmp_to_key(findfriends_sort_card))
         self.landlord = None
 
@@ -31,7 +31,7 @@ class FindfriendsDealer:
         Args:
             players (list): list of findfriendsPlayer objects
         '''
-        hand_num = (len(self.deck) - 3) // len(players)
+        hand_num = (len(self.deck) - 6) // len(players)
         for index, player in enumerate(players):
             current_hand = self.deck[index*hand_num:(index+1)*hand_num]
             current_hand.sort(key=functools.cmp_to_key(findfriends_sort_card))

@@ -139,8 +139,8 @@ class FindfriendsEnv(Env):
         '''
         return _cards2array(self._decode_action(action))
 
-Card2Column = {'3': 0, '4': 1, '5': 2, '6': 3, '7': 4, '8': 5, '9': 6, 'T': 7,
-               'J': 8, 'Q': 9, 'K': 10, 'A': 11, '2': 12}
+Card2Column = {'2': 0, '3': 1, '4': 2, '5': 3, '6': 4, '7': 5, '8': 6,'9':7, 'T': 8,
+               'J': 9, 'Q': 10, 'K': 11, 'A': 12}
 
 NumOnes2Array = {0: np.array([0, 0, 0, 0]),
                  1: np.array([1, 0, 0, 0]),
@@ -149,9 +149,9 @@ NumOnes2Array = {0: np.array([0, 0, 0, 0]),
                  4: np.array([1, 1, 1, 1])}
 
 def _cards2array(cards):
-    if cards == 'pass':
-        return np.zeros(54, dtype=np.int8)
-
+    # if cards == 'pass':
+    #     return np.zeros(54, dtype=np.int8)
+    print(f'card is {cards}')
     matrix = np.zeros([4, 13], dtype=np.int8)
     jokers = np.zeros(2, dtype=np.int8)
     counter = Counter(cards)

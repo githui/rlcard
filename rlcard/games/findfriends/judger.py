@@ -260,7 +260,7 @@ class FindfriendsJudger:
     def __init__(self, players, np_random):
         ''' Initilize the Judger class for Dou Dizhu
         '''
-        self.playable_cards = [set() for _ in range(3)]
+        self.playable_cards = [set() for _ in range(6)]
         self._recorded_removed_playable_cards = [[] for _ in range(3)]
         for player in players:
             player_id = player.player_id
