@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-''' Implement Doudizhu Player class
+''' Implement findfriends Player class
 '''
 import functools
 
-from rlcard.games.doudizhu.utils import get_gt_cards
-from rlcard.games.doudizhu.utils import cards2str, doudizhu_sort_card
+from rlcard.games.findfriends.utils import get_gt_cards
+from rlcard.games.findfriends.utils import cards2str, findfriends_sort_card
 
 
-class DoudizhuPlayer:
+class FindfriendsPlayer:
     ''' Player can store cards in the player's hand and the role,
     determine the actions can be made according to the rules,
     and can perfrom corresponding action
@@ -61,9 +61,9 @@ class DoudizhuPlayer:
         ''' Get the actions can be made based on the rules
 
         Args:
-            greater_player (DoudizhuPlayer object): player who played
+            greater_player (findfriendsPlayer object): player who played
         current biggest cards.
-            judger (DoudizhuJudger object): object of DoudizhuJudger
+            judger (findfriendsJudger object): object of findfriendsJudger
 
         Returns:
             list: list of string of actions. Eg: ['pass', '8', '9', 'T', 'J']
@@ -80,10 +80,10 @@ class DoudizhuPlayer:
 
         Args:
             action (string): specific action
-            greater_player (DoudizhuPlayer object): The player who played current biggest cards.
+            greater_player (findfriendsPlayer object): The player who played current biggest cards.
 
         Returns:
-            object of DoudizhuPlayer: If there is a new greater_player, return it, if not, return None
+            object of findfriendsPlayer: If there is a new greater_player, return it, if not, return None
         '''
         trans = {'B': 'BJ', 'R': 'RJ'}
         if action == 'pass':
@@ -112,4 +112,4 @@ class DoudizhuPlayer:
         '''
         removed_cards = self._recorded_played_cards.pop()
         self._current_hand.extend(removed_cards)
-        self._current_hand.sort(key=functools.cmp_to_key(doudizhu_sort_card))
+        self._current_hand.sort(key=functools.cmp_to_key(findfriends_sort_card))

@@ -1,4 +1,4 @@
-''' Doudizhu utils
+''' findfriends utils
 '''
 import os
 import json
@@ -11,15 +11,15 @@ import rlcard
 # Read required docs
 ROOT_PATH = rlcard.__path__[0]
 
-if not os.path.isfile(os.path.join(ROOT_PATH, 'games/doudizhu/jsondata/action_space.txt')) \
-        or not os.path.isfile(os.path.join(ROOT_PATH, 'games/doudizhu/jsondata/card_type.json')) \
-        or not os.path.isfile(os.path.join(ROOT_PATH, 'games/doudizhu/jsondata/type_card.json')):
+if not os.path.isfile(os.path.join(ROOT_PATH, 'games/findfriends/jsondata/action_space.txt')) \
+        or not os.path.isfile(os.path.join(ROOT_PATH, 'games/findfriends/jsondata/card_type.json')) \
+        or not os.path.isfile(os.path.join(ROOT_PATH, 'games/findfriends/jsondata/type_card.json')):
     import zipfile
-    with zipfile.ZipFile(os.path.join(ROOT_PATH, 'games/doudizhu/jsondata.zip'),"r") as zip_ref:
-        zip_ref.extractall(os.path.join(ROOT_PATH, 'games/doudizhu/'))
+    with zipfile.ZipFile(os.path.join(ROOT_PATH, 'games/findfriends/jsondata.zip'),"r") as zip_ref:
+        zip_ref.extractall(os.path.join(ROOT_PATH, 'games/findfriends/'))
 
 # Action space
-action_space_path = os.path.join(ROOT_PATH, 'games/doudizhu/jsondata/action_space.txt')
+action_space_path = os.path.join(ROOT_PATH, 'games/findfriends/jsondata/action_space.txt')
 with open(action_space_path, 'r') as f:
     ID_2_ACTION = f.readline().strip().split()
     ACTION_2_ID = {}
@@ -27,13 +27,13 @@ with open(action_space_path, 'r') as f:
         ACTION_2_ID[action] = i
 
 # a map of card to its type. Also return both dict and list to accelerate
-card_type_path = os.path.join(ROOT_PATH, 'games/doudizhu/jsondata/card_type.json')
+card_type_path = os.path.join(ROOT_PATH, 'games/findfriends/jsondata/card_type.json')
 with open(card_type_path, 'r') as f:
     data = json.load(f, object_pairs_hook=OrderedDict)
     CARD_TYPE = (data, list(data), set(data))
 
 # a map of type to its cards
-type_card_path = os.path.join(ROOT_PATH, 'games/doudizhu/jsondata/type_card.json')
+type_card_path = os.path.join(ROOT_PATH, 'games/findfriends/jsondata/type_card.json')
 with open(type_card_path, 'r') as f:
     TYPE_CARD = json.load(f, object_pairs_hook=OrderedDict)
 
@@ -53,7 +53,7 @@ INDEX = {'3': 0, '4': 1, '5': 2, '6': 3, '7': 4,
 INDEX = OrderedDict(sorted(INDEX.items(), key=lambda t: t[1]))
 
 
-def doudizhu_sort_str(card_1, card_2):
+def findfriends_sort_str(card_1, card_2):
     ''' Compare the rank of two cards of str representation
 
     Args:
@@ -72,7 +72,7 @@ def doudizhu_sort_str(card_1, card_2):
     return 0
 
 
-def doudizhu_sort_card(card_1, card_2):
+def findfriends_sort_card(card_1, card_2):
     ''' Compare the rank of two cards of Card object
 
     Args:
@@ -227,8 +227,8 @@ def get_gt_cards(player, greater_player):
     previous player in one round
 
     Args:
-        player (DoudizhuPlayer object): the player waiting to play cards
-        greater_player (DoudizhuPlayer object): the player who played current biggest cards.
+        player (findfriendsPlayer object): the player waiting to play cards
+        greater_player (findfriendsPlayer object): the player who played current biggest cards.
 
     Returns:
         list: list of string of greater cards

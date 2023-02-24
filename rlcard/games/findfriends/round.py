@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-''' Implement Doudizhu Round class
+''' Implement findfriends Round class
 '''
 
 import functools
 import numpy as np
 
-from rlcard.games.doudizhu import Dealer
-from rlcard.games.doudizhu.utils import cards2str, doudizhu_sort_card
-from rlcard.games.doudizhu.utils import CARD_RANK_STR, CARD_RANK_STR_INDEX
+from rlcard.games.findfriends import Dealer
+from rlcard.games.findfriends.utils import cards2str, findfriends_sort_card
+from rlcard.games.findfriends.utils import CARD_RANK_STR, CARD_RANK_STR_INDEX
 
 
-class DoudizhuRound:
+class FindfriendsRound:
     ''' Round can call other Classes' functions to keep the game running
     '''
     def __init__(self, np_random, played_cards):
@@ -26,11 +26,11 @@ class DoudizhuRound:
         ''' Call dealer to deal cards and bid landlord.
 
         Args:
-            players (list): list of DoudizhuPlayer objects
+            players (list): list of findfriendsPlayer objects
         '''
         landlord_id = self.dealer.determine_role(players)
         seen_cards = self.dealer.deck[-3:]
-        seen_cards.sort(key=functools.cmp_to_key(doudizhu_sort_card))
+        seen_cards.sort(key=functools.cmp_to_key(findfriends_sort_card))
         self.seen_cards = cards2str(seen_cards)
         self.landlord_id = landlord_id
         self.current_player = landlord_id
@@ -68,11 +68,11 @@ class DoudizhuRound:
         ''' Call other Classes's functions to keep one round running
 
         Args:
-            player (object): object of DoudizhuPlayer
+            player (object): object of findfriendsPlayer
             action (str): string of legal specific action
 
         Returns:
-            object of DoudizhuPlayer: player who played current biggest cards.
+            object of findfriendsPlayer: player who played current biggest cards.
         '''
         self.update_public(action)
         self.greater_player = player.play(action, self.greater_player)
@@ -82,7 +82,7 @@ class DoudizhuRound:
         ''' Reverse the last action
 
         Args:
-            players (list): list of DoudizhuPlayer objects
+            players (list): list of findfriendsPlayer objects
         Returns:
             The last player id and the cards played
         '''

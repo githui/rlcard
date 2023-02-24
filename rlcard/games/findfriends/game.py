@@ -1,24 +1,24 @@
 # -*- coding: utf-8 -*-
-''' Implement Doudizhu Game class
+''' Implement findfriends Game class
 '''
 import functools
 from heapq import merge
 import numpy as np
 
-from rlcard.games.doudizhu.utils import cards2str, doudizhu_sort_card, CARD_RANK_STR
-from rlcard.games.doudizhu import Player
-from rlcard.games.doudizhu import Round
-from rlcard.games.doudizhu import Judger
+from rlcard.games.findfriends.utils import cards2str, findfriends_sort_card, CARD_RANK_STR
+from rlcard.games.findfriends import Player
+from rlcard.games.findfriends import Round
+from rlcard.games.findfriends import Judger
 
 
-class DoudizhuGame:
-    ''' Provide game APIs for env to run doudizhu and get corresponding state
+class FindfriendsGame:
+    ''' Provide game APIs for env to run findfriends and get corresponding state
     information.
     '''
     def __init__(self, allow_step_back=False):
         self.allow_step_back = allow_step_back
         self.np_random = np.random.RandomState()
-        self.num_players = 3
+        self.num_players = 6
 
     def init_game(self):
         ''' Initialize players and state.
@@ -54,7 +54,7 @@ class DoudizhuGame:
         ''' Perform one draw of the game
 
         Args:
-            action (str): specific action of doudizhu. Eg: '33344'
+            action (str): specific action of findfriends. Eg: '33344'
 
         Returns:
             dict: next player's state
@@ -132,7 +132,7 @@ class DoudizhuGame:
         ''' Return the total number of abstract acitons
 
         Returns:
-            int: the total number of abstract actions of doudizhu
+            int: the total number of abstract actions of findfriends
         '''
         return 27472
 
@@ -145,10 +145,10 @@ class DoudizhuGame:
         return self.round.current_player
 
     def get_num_players(self):
-        ''' Return the number of players in doudizhu
+        ''' Return the number of players in findfriends
 
         Returns:
-            int: the number of players in doudizhu
+            int: the number of players in findfriends
         '''
         return self.num_players
 
@@ -165,5 +165,5 @@ class DoudizhuGame:
     def _get_others_current_hand(self, player):
         player_up = self.players[(player.player_id+1) % len(self.players)]
         player_down = self.players[(player.player_id-1) % len(self.players)]
-        others_hand = merge(player_up.current_hand, player_down.current_hand, key=functools.cmp_to_key(doudizhu_sort_card))
+        others_hand = merge(player_up.current_hand, player_down.current_hand, key=functools.cmp_to_key(findfriends_sort_card))
         return cards2str(others_hand)
