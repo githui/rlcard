@@ -94,7 +94,7 @@ class FindfriendsEnv(Env):
         Returns:
             payoffs (list): a list of payoffs for each player
         '''
-        return self.game.judger.judge_payoffs(self.game.round.landlord_id, self.game.winner_id)
+        return self.game.judger.judge_payoffs(self.game.round.leader_id, self.game.winner_id)
 
     def _decode_action(self, action_id):
         ''' Action id -> the action in the game. Must be implemented in the child class.

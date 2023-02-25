@@ -29,7 +29,7 @@ class FindfriendsRound:
             players (list): list of findfriendsPlayer objects
         '''
         leader_id = self.dealer.determine_role(players)
-        seen_cards = self.dealer.deck[-3:]
+        seen_cards = self.dealer.deck[-6:]
         seen_cards.sort(key=functools.cmp_to_key(findfriends_sort_card))
         self.seen_cards = cards2str(seen_cards)
         # self.landlord_id = landlord_id
