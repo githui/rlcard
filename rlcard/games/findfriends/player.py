@@ -30,7 +30,7 @@ class FindfriendsPlayer:
         self._current_hand = []
         self.role = ''
         self.played_cards = None
-        self.singles = '3456789TJQKA2BR'
+        self.singles = '23456789TJQKABR'
 
         #record cards removed from self._current_hand for each play()
         # and restore cards back to self._current_hand when play_back()
@@ -46,7 +46,7 @@ class FindfriendsPlayer:
     def get_state(self, public, others_hands, num_cards_left, actions):
         state = {}
         state['seen_cards'] = public['seen_cards']
-        state['landlord'] = public['landlord']
+        state['leader'] = public['leader']
         state['trace'] = public['trace'].copy()
         state['played_cards'] = public['played_cards']
         state['self'] = self.player_id

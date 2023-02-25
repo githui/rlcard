@@ -28,14 +28,15 @@ class FindfriendsRound:
         Args:
             players (list): list of findfriendsPlayer objects
         '''
-        landlord_id = self.dealer.determine_role(players)
+        leader_id = self.dealer.determine_role(players)
         seen_cards = self.dealer.deck[-3:]
         seen_cards.sort(key=functools.cmp_to_key(findfriends_sort_card))
         self.seen_cards = cards2str(seen_cards)
-        self.landlord_id = landlord_id
-        self.current_player = landlord_id
+        # self.landlord_id = landlord_id
+        self.current_player = leader_id
         self.public = {'deck': self.deck_str, 'seen_cards': self.seen_cards,
-                       'landlord': self.landlord_id, 'trace': self.trace,
+                       'leader': self.current_player,
+                       'trace': self.trace,
                        'played_cards': ['' for _ in range(len(players))]}
 
     @staticmethod
