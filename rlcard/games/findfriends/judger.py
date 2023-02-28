@@ -64,28 +64,28 @@ class FindfriendsJudger:
         candidates = []
         prev_card = None
         same_card_count = 0
-        for card in hands:
-            #dont count those cards in the chain
-            if (CARD_RANK_STR_INDEX[card] >= chain_start and CARD_RANK_STR_INDEX[card] < chain_start + chain_length):
-                continue
-            if (card == prev_card):
-                #attachments can not have bomb
-                if (same_card_count == 3):
-                    continue
-                #attachments can not have 3 same cards consecutive with the trio (except 3 cards of '222')
-                elif (same_card_count == 2 and (CARD_RANK_STR_INDEX[card] == chain_start - 1 or CARD_RANK_STR_INDEX[card] == chain_start + chain_length) and card != '2'):
-                    continue
-                else:
-                    same_card_count += 1
-            else:
-                prev_card = card
-                same_card_count = 1
-            candidates.append(CARD_RANK_STR_INDEX[card])
-        for attachment in combinations(candidates, size):
-            if (attachment[-1] == 14 and attachment[-2] == 13):
-                continue
-            i = bisect_left(attachment, chain_start)
-            attachments.add((attachment[:i], attachment[i:]))
+        # for card in hands:
+        #     #dont count those cards in the chain
+        #     if (CARD_RANK_STR_INDEX[card] >= chain_start and CARD_RANK_STR_INDEX[card] < chain_start + chain_length):
+        #         continue
+        #     if (card == prev_card):
+        #         #attachments can not have bomb
+        #         if (same_card_count == 3):
+        #             continue
+        #         #attachments can not have 3 same cards consecutive with the trio (except 3 cards of '222')
+        #         elif (same_card_count == 2 and (CARD_RANK_STR_INDEX[card] == chain_start - 1 or CARD_RANK_STR_INDEX[card] == chain_start + chain_length) and card != '2'):
+        #             continue
+        #         else:
+        #             same_card_count += 1
+        #     else:
+        #         prev_card = card
+        #         same_card_count = 1
+        #     candidates.append(CARD_RANK_STR_INDEX[card])
+        # for attachment in combinations(candidates, size):
+        #     if (attachment[-1] == 14 and attachment[-2] == 13):
+        #         continue
+        #     i = bisect_left(attachment, chain_start)
+        #     attachments.add((attachment[:i], attachment[i:]))
         return list(attachments)
 
     @classmethod

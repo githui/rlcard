@@ -7,7 +7,7 @@ import threading
 import collections
 
 import rlcard
-
+import numpy as np
 # Read required docs
 ROOT_PATH = rlcard.__path__[0]
 
@@ -38,18 +38,18 @@ with open(type_card_path, 'r') as f:
     TYPE_CARD = json.load(f, object_pairs_hook=OrderedDict)
 
 # rank list of solo character of cards
-CARD_RANK_STR = ['3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K',
-                 'A', '2', 'B', 'R']
-CARD_RANK_STR_INDEX = {'3': 0, '4': 1, '5': 2, '6': 3, '7': 4,
-            '8': 5, '9': 6, 'T': 7, 'J': 8, 'Q': 9,
-            'K': 10, 'A': 11, '2': 12, 'B': 13, 'R': 14}
+CARD_RANK_STR = ['2','3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K',
+                 'A', 'B', 'R']
+CARD_RANK_STR_INDEX = {'2': 0, '3': 1, '4': 2, '5': 3, '6': 4,
+            '7': 5, '8': 6,'9' : 7, 'T': 8, 'J': 9, 'Q': 10,
+            'K': 11, 'A': 12, 'B': 13, 'R': 14}
 # rank list
-CARD_RANK = ['3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K',
+CARD_RANK = ['2','3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K',
              'A', '2', 'BJ', 'RJ']
 
-INDEX = {'3': 0, '4': 1, '5': 2, '6': 3, '7': 4,
-         '8': 5, '9': 6, 'T': 7, 'J': 8, 'Q': 9,
-         'K': 10, 'A': 11, '2': 12, 'B': 13, 'R': 14}
+INDEX = {'2': 0, '3': 1, '4': 2, '5': 3, '6': 4,
+         '7': 5, '8': 6, '9' : 7, 'T': 8, 'J': 9, 'Q': 10,
+         'K': 11, 'A': 12, 'B': 13, 'R': 14}
 INDEX = OrderedDict(sorted(INDEX.items(), key=lambda t: t[1]))
 
 
@@ -143,11 +143,13 @@ def cards2str(cards):
         string: string representation of cards
     '''
     response = ''
+    # print(f'cards in {cards} ')
     for card in cards:
-        if card.rank == '':
-            response += card.suit[0]
-        else:
-            response += card.rank
+        # if card.rank == '':
+        #     response += card.suit[0]
+        # else:
+        response += str(card)
+    # print(f'response {response}')
     return response
 
 class LocalObjs(threading.local):

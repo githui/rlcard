@@ -5,7 +5,7 @@ import functools
 
 from rlcard.games.findfriends.utils import get_gt_cards
 from rlcard.games.findfriends.utils import cards2str, findfriends_sort_card
-
+import numpy as np
 
 class FindfriendsPlayer:
     ''' Player can store cards in the player's hand and the role,

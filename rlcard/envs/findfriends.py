@@ -2,7 +2,7 @@ from collections import Counter, OrderedDict
 import numpy as np
 
 from rlcard.envs import Env
-
+from textwrap import wrap
 
 class FindfriendsEnv(Env):
     ''' FF Environment
@@ -154,14 +154,16 @@ def _cards2array(cards):
     print(f'card is {cards}')
     matrix = np.zeros([4, 13], dtype=np.int8)
     jokers = np.zeros(2, dtype=np.int8)
+    cards=wrap(cards,2)
     counter = Counter(cards)
     for card, num_times in counter.items():
-        if card == 'B':
+        if card == 'BJ':
             jokers[0] = 1
-        elif card == 'R':
+        elif card == 'RJ':
             jokers[1] = 1
         else:
-            matrix[:, Card2Column[card]] = NumOnes2Array[num_times]
+            column=card[0]
+            matrix[:, Card2Column[card[0]]] = NumOnes2Array[num_times]
     return np.concatenate((matrix.flatten('F'), jokers))
 
 def _get_one_hot_array(num_left_cards, max_num_cards):

@@ -36,8 +36,7 @@ class FindfriendsGame:
                         for num in range(self.num_players)]
 
         # initialize round to deal cards and determine landlord
-        self.played_cards = [np.zeros((len(CARD_RANK_STR), ), dtype=np.int32)
-                                for _ in range(self.num_players)]
+        self.played_cards = [np.zeros((26,6,2),dtype=int)]
         self.round = Round(self.np_random, self.played_cards)
         self.round.initiate(self.players)
 
