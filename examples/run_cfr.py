@@ -18,14 +18,14 @@ from rlcard.utils import (
 def train(args):
     # Make environments, CFR only supports Leduc Holdem
     env = rlcard.make(
-        'leduc-holdem',
+        'findfriends',
         config={
             'seed': 0,
             'allow_step_back': True,
         }
     )
     eval_env = rlcard.make(
-        'leduc-holdem',
+        'findfriends',
         config={
             'seed': 0,
         }

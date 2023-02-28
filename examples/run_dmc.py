@@ -34,7 +34,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--env',
         type=str,
-        default='leduc-holdem',
+        default='findfriends',
         choices=[
             'blackjack',
             'leduc-holdem',
@@ -43,7 +43,8 @@ if __name__ == '__main__':
             'mahjong',
             'no-limit-holdem',
             'uno',
-            'gin-rummy'
+            'gin-rummy',
+            'findfriends'
         ],
     )
     parser.add_argument(
