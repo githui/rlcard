@@ -141,6 +141,7 @@ class FindfriendsEnv(Env):
 
 Card2Column = {'2': 0, '3': 1, '4': 2, '5': 3, '6': 4, '7': 5, '8': 6,'9':7, 'T': 8,
                'J': 9, 'Q': 10, 'K': 11, 'A': 12}
+Card2Row={'S':0,'H':1,'C':2,'D':3}
 
 NumOnes2Array = {0: np.array([0, 0, 0, 0]),
                  1: np.array([1, 0, 0, 0]),
@@ -163,7 +164,7 @@ def _cards2array(cards):
             jokers[1] = 1
         else:
             column=card[0]
-            matrix[:, Card2Column[card[0]]] = NumOnes2Array[num_times]
+            matrix[Card2Row[card[1]], Card2Column[card[0]]] = num_times
     return np.concatenate((matrix.flatten('F'), jokers))
 
 def _get_one_hot_array(num_left_cards, max_num_cards):
