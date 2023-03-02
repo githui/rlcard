@@ -45,8 +45,8 @@ class FindfriendsEnv(Env):
         if state['self'] == 0: # landlord
             landlord_up_played_cards = _cards2array(state['played_cards'][2])
             landlord_down_played_cards = _cards2array(state['played_cards'][1])
-            landlord_up_num_cards_left = _get_one_hot_array(state['num_cards_left'][2], 17) 
-            landlord_down_num_cards_left = _get_one_hot_array(state['num_cards_left'][1], 17)
+            landlord_up_num_cards_left = _get_one_hot_array(state['num_cards_left'][2], 26)
+            landlord_down_num_cards_left = _get_one_hot_array(state['num_cards_left'][1], 26)
             obs = np.concatenate((current_hand,
                                   others_hand,
                                   last_action,
@@ -152,10 +152,14 @@ NumOnes2Array = {0: np.array([0, 0, 0, 0]),
 def _cards2array(cards):
     # if cards == 'pass':
     #     return np.zeros(54, dtype=np.int8)
-    print(f'card is {cards}')
+
     matrix = np.zeros([4, 13], dtype=np.int8)
     jokers = np.zeros(2, dtype=np.int8)
     cards=wrap(cards,2)
+
+    for c in cards:
+        print(f'card is {c}')
+    print(f'there are {len(cards)} cards')
     counter = Counter(cards)
     for card, num_times in counter.items():
         if card == 'BJ':
