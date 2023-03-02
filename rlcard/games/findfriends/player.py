@@ -47,7 +47,7 @@ class FindfriendsPlayer:
         state = {}
         state['seen_cards'] = public['seen_cards']
         state['leader'] = public['leader']
-        state['trace'] = public['trace'].copy()
+        # state['trace'] = public['trace'].copy()
         state['played_cards'] = public['played_cards']
         state['self'] = self.player_id
         state['current_hand'] = cards2str(self._current_hand)

@@ -8,8 +8,9 @@ from bisect import bisect_left
 
 from rlcard.games.findfriends.utils import CARD_RANK_STR, CARD_RANK_STR_INDEX
 from rlcard.games.findfriends.utils import cards2str, contains_cards
+from rlcard.utils import init_54_deck
 
-
+from textwrap import wrap
 
 class FindfriendsJudger:
     ''' Determine what cards a player can play
@@ -128,9 +129,15 @@ class FindfriendsJudger:
             set: set of string of playable cards
         '''
         cards_dict = collections.defaultdict(int)
+        current_hand = wrap(current_hand, 2)
+        one_deck=init_54_deck()
+
         for card in current_hand:
             cards_dict[card] += 1
-        cards_count = np.array([cards_dict[k] for k in CARD_RANK_STR])
+
+        cards_count = np.array([cards_dict[k] for k in one_deck])
+
+        # print(cards_count)
         playable_cards = set()
 
         non_zero_indexes = np.argwhere(cards_count > 0)

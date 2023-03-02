@@ -73,13 +73,12 @@ class FindfriendsEnv(Env):
             obs = np.concatenate((current_hand,
                                   others_hand,
                                   last_action,
-                                  last_9_actions,
                                   landlord_played_cards,
                                   teammate_played_cards,
-                                  last_landlord_action,
-                                  last_teammate_action,
-                                  landlord_num_cards_left,
-                                  teammate_num_cards_left))
+                                  # last_landlord_action,
+                                  # last_teammate_action,
+                                  # landlord_num_cards_left,
+                                  ))
 
         extracted_state = OrderedDict({'obs': obs, 'legal_actions': self._get_legal_actions()})
         extracted_state['raw_obs'] = state
