@@ -40,37 +40,36 @@ class FindfriendsEnv(Env):
         #         last_action = state['trace'][-1][1]
         last_action = _cards2array(last_action)
         #
-        last_9_actions = _action_seq2array(_process_action_seq(state['trace']))
+        # last_9_actions = _action_seq2array(_process_action_seq(state['trace']))
 
         if state['self'] == 0: # landlord
             landlord_up_played_cards = _cards2array(state['played_cards'][2])
             landlord_down_played_cards = _cards2array(state['played_cards'][1])
-            landlord_up_num_cards_left = _get_one_hot_array(state['num_cards_left'][2], 26)
-            landlord_down_num_cards_left = _get_one_hot_array(state['num_cards_left'][1], 26)
+            # landlord_up_num_cards_left = _get_one_hot_array(state['num_cards_left'][2], 26)
+            # landlord_down_num_cards_left = _get_one_hot_array(state['num_cards_left'][1], 26)
             obs = np.concatenate((current_hand,
                                   others_hand,
                                   last_action,
-                                  last_9_actions,
                                   landlord_up_played_cards,
                                   landlord_down_played_cards,
-                                  landlord_up_num_cards_left,
-                                  landlord_down_num_cards_left))
+                                  # landlord_up_num_cards_left,
+                                  ))
         else:
             landlord_played_cards = _cards2array(state['played_cards'][0])
-            for i, action in reversed(state['trace']):
-                if i == 0:
-                    last_landlord_action = action
-            last_landlord_action = _cards2array(last_landlord_action)
-            landlord_num_cards_left = _get_one_hot_array(state['num_cards_left'][0], 20)
+            # for i, action in reversed(state['trace']):
+            #     if i == 0:
+            #         last_landlord_action = action
+            # last_landlord_action = _cards2array(last_landlord_action)
+            # landlord_num_cards_left = _get_one_hot_array(state['num_cards_left'][0], 20)
 
             teammate_id = 3 - state['self']
             teammate_played_cards = _cards2array(state['played_cards'][teammate_id])
-            last_teammate_action = 'pass'
-            for i, action in reversed(state['trace']):
-                if i == teammate_id:
-                    last_teammate_action = action
-            last_teammate_action = _cards2array(last_teammate_action)
-            teammate_num_cards_left = _get_one_hot_array(state['num_cards_left'][teammate_id], 17)
+            # last_teammate_action = 'pass'
+            # for i, action in reversed(state['trace']):
+            #     if i == teammate_id:
+            #         last_teammate_action = action
+            # last_teammate_action = _cards2array(last_teammate_action)
+            # teammate_num_cards_left = _get_one_hot_array(state['num_cards_left'][teammate_id], 17)
             obs = np.concatenate((current_hand,
                                   others_hand,
                                   last_action,

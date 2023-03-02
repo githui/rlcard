@@ -117,12 +117,13 @@ class FindfriendsGame:
         '''
         player = self.players[player_id]
         others_hands = self._get_others_current_hand(player)
-        num_cards_left = [len(self.players[i].current_hand) for i in range(self.num_players)]
+        # num_cards_left = [len(self.players[i].current_hand) for i in range(self.num_players)]
         if self.is_over():
             actions = []
         else:
             actions = list(player.available_actions(self.round.greater_player, self.judger))
-        state = player.get_state(self.round.public, others_hands, num_cards_left, actions)
+
+        state = player.get_state(self.round.public, others_hands, actions)
 
         return state
 

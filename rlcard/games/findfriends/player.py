@@ -43,7 +43,7 @@ class FindfriendsPlayer:
     def set_current_hand(self, value):
         self._current_hand = value
 
-    def get_state(self, public, others_hands, num_cards_left, actions):
+    def get_state(self, public, others_hands,  actions):
         state = {}
         state['seen_cards'] = public['seen_cards']
         state['leader'] = public['leader']
@@ -52,7 +52,7 @@ class FindfriendsPlayer:
         state['self'] = self.player_id
         state['current_hand'] = cards2str(self._current_hand)
         state['others_hand'] = others_hands
-        state['num_cards_left'] = num_cards_left
+        # state['num_cards_left'] = num_cards_left
         state['actions'] = actions
 
         return state
