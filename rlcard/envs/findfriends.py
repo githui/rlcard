@@ -33,13 +33,13 @@ class FindfriendsEnv(Env):
         others_hand = _cards2array(state['others_hand'])
 
         last_action = ''
-        if len(state['trace']) != 0:
-            if state['trace'][-1][1] == 'pass':
-                last_action = state['trace'][-2][1]
-            else:
-                last_action = state['trace'][-1][1]
+        # if len(state['trace']) != 0:
+        #     if state['trace'][-1][1] == 'pass':
+        #         last_action = state['trace'][-2][1]
+        #     else:
+        #         last_action = state['trace'][-1][1]
         last_action = _cards2array(last_action)
-
+        #
         last_9_actions = _action_seq2array(_process_action_seq(state['trace']))
 
         if state['self'] == 0: # landlord

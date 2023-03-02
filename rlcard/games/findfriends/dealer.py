@@ -38,6 +38,11 @@ class FindfriendsDealer:
             player.set_current_hand(current_hand)
             player.initial_hand = cards2str(player.current_hand)
 
+            print(f'player {index} has current hand with {len(current_hand)} cards')
+
+            for h in current_hand:
+                print(f'current hand {h}')
+
     def determine_role(self, players):
         ''' Determine landlord and peasants according to players' hand
 
