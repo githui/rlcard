@@ -132,11 +132,15 @@ class FindfriendsJudger:
         current_hand = wrap(current_hand, 2)
         one_deck=init_54_deck()
 
+
         for card in current_hand:
             cards_dict[card] += 1
 
+        # for k in one_deck:
+        #     print(f'count is {cards_dict[k]}')
         cards_count = np.array([cards_dict[k] for k in one_deck])
 
+        # print(cards_count)
         # print(cards_count)
         playable_cards = set()
 

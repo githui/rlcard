@@ -11,7 +11,7 @@ class Card:
     suit = None
     rank = None
     valid_suit = ['S', 'H', 'D', 'C', 'BJ', 'RJ']
-    valid_rank = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K']
+    valid_rank = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K','A']
 
     def __init__(self, suit, rank):
         ''' Initialize the suit and rank of a card
@@ -32,7 +32,12 @@ class Card:
 
     def __hash__(self):
         suit_index = Card.valid_suit.index(self.suit)
-        rank_index = Card.valid_rank.index(self.rank)
+
+        if self.rank=='':
+            rank_index=5
+        else:
+            rank_index = Card.valid_rank.index(self.rank)
+        print(self.rank)
         return rank_index + 100 * suit_index
 
     def __str__(self):

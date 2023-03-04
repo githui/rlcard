@@ -46,10 +46,10 @@ def init_54_deck():
         (list): Alist of Card object
     '''
     suit_list = ['S', 'H', 'D', 'C']
-    rank_list = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K','A' ]
-    res = [Card(suit, rank) for suit in suit_list for rank in rank_list]
+    rank_list = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K','A']
+    res = [Card(suit, rank) for suit in suit_list[:-1] for rank in rank_list[:-1]]
     res.append(Card('BJ', ''))
-    res.append(Card('RJ', ''))
+    res.append(Card('RJ',''))
     return res
 
 def rank2int(rank):
