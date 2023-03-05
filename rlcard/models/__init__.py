@@ -29,3 +29,6 @@ register(
 register(
     model_id='gin-rummy-novice-rule',
     entry_point='rlcard.models.gin_rummy_rule_models:GinRummyNoviceRuleModel')
+register(
+    model_id='findfriends-rule',
+    entry_point='rlcard.models.findfriends_rule_models:FindFriendsRuleModel')

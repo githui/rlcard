@@ -18,7 +18,7 @@ from rlcard.games.findfriends.player import FindfriendsPlayer as Player
 
 np_random = np.random.RandomState()
 env=rlcard.make('findfriends')
-players=[Player(num, np_random) for num in range(6)]
+
 
 env.set_agents(players)
 env.run()
