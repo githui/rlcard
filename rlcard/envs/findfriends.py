@@ -155,9 +155,9 @@ def _cards2array(cards):
     jokers = np.zeros(2, dtype=np.int8)
     cards=wrap(cards,2)
 
-    for c in cards:
-        print(f'card is {c}')
-    print(f'there are {len(cards)} cards')
+    # for c in cards:
+    #     print(f'card is {c}')
+    # print(f'there are {len(cards)} cards')
     counter = Counter(cards)
     for card, num_times in counter.items():
         if card == 'BJ':
