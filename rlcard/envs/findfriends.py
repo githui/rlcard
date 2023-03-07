@@ -32,13 +32,13 @@ class FindfriendsEnv(Env):
         current_hand = _cards2array(state['current_hand'])
         others_hand = _cards2array(state['others_hand'])
 
-        last_action = ''
-        # if len(state['trace']) != 0:
-        #     if state['trace'][-1][1] == 'pass':
-        #         last_action = state['trace'][-2][1]
-        #     else:
-        #         last_action = state['trace'][-1][1]
-        last_action = _cards2array(last_action)
+        # last_action = ''
+        # # if len(state['trace']) != 0:
+        # #     if state['trace'][-1][1] == 'pass':
+        # #         last_action = state['trace'][-2][1]
+        # #     else:
+        # #         last_action = state['trace'][-1][1]
+        # last_action = _cards2array(last_action)
         #
         # last_9_actions = _action_seq2array(_process_action_seq(state['trace']))
 
@@ -49,7 +49,7 @@ class FindfriendsEnv(Env):
             # landlord_down_num_cards_left = _get_one_hot_array(state['num_cards_left'][1], 26)
             obs = np.concatenate((current_hand,
                                   others_hand,
-                                  last_action,
+                                  # last_action,
                                   landlord_up_played_cards,
                                   landlord_down_played_cards,
                                   # landlord_up_num_cards_left,
@@ -72,7 +72,7 @@ class FindfriendsEnv(Env):
             # teammate_num_cards_left = _get_one_hot_array(state['num_cards_left'][teammate_id], 17)
             obs = np.concatenate((current_hand,
                                   others_hand,
-                                  last_action,
+                                  # last_action,
                                   landlord_played_cards,
                                   teammate_played_cards,
                                   # last_landlord_action,

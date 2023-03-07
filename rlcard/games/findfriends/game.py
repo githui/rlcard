@@ -66,8 +66,8 @@ class FindfriendsGame:
         # perfrom action
         player = self.players[self.round.current_player]
         self.round.proceed_round(player, action)
-        if (action != 'pass'):
-            self.judger.calc_playable_cards(player)
+        # if (action != 'pass'):
+        #     self.judger.calc_playable_cards(player)
         if self.judger.judge_game(self.players, self.round.current_player):
             self.winner_id = self.round.current_player
         next_id = (player.player_id+1) % len(self.players)
