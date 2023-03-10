@@ -79,15 +79,15 @@ def findfriends_sort_card(card_1, card_2):
         card_1 (object): object of Card
         card_2 (object): object of card
     '''
-    key = []
-    for card in [card_1, card_2]:
-        if card.rank == '':
-            key.append(CARD_RANK.index(card.suit))
-        else:
-            key.append(CARD_RANK.index(card.rank))
-    if key[0] > key[1]:
+    # key = []
+    # for card in [card_1, card_2]:
+    #     if card.rank == '':
+    #         key.append(CARD_RANK.index(card.suit))
+    #     else:
+    #         key.append(CARD_RANK.index(card.rank))
+    if card_1.rank > card_2.rank:
         return 1
-    if key[0] < key[1]:
+    else:
         return -1
     return 0
 
@@ -148,7 +148,7 @@ def cards2str(cards):
         # if card.rank == '':
         #     response += card.suit[0]
         # else:
-        response += str(card)
+        response += str(card.suit)+str(card.rank)
     # print(f'response {response}')
     return response
 

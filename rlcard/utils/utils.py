@@ -34,9 +34,13 @@ def init_standard_deck():
     Returns:
         (list): A list of Card object
     '''
-    suit_list = ['S', 'H', 'D', 'C']
-    rank_list = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K']
-    res = [Card(suit, rank) for suit in suit_list for rank in rank_list]
+    suit_list = [0, 1, 2, 3, 4]
+    rank_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    # suit_list = ['S', 'H', 'D', 'C']
+    # rank_list = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K']
+    res = [Card(suit, rank) for suit in suit_list[:-1] for rank in rank_list[:-2]]
+    res.append(Card(4,13))
+    res.append((Card(4,14)))
     return res
 
 def init_54_deck():
@@ -45,11 +49,13 @@ def init_54_deck():
     Returns:
         (list): Alist of Card object
     '''
-    suit_list = ['S', 'H', 'D', 'C']
-    rank_list = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K','A']
-    res = [Card(suit, rank) for suit in suit_list[:-1] for rank in rank_list[:-1]]
-    res.append(Card('BJ', ''))
-    res.append(Card('RJ',''))
+    suit_list = [0, 1, 2, 3, 4]
+    rank_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    # suit_list = ['S', 'H', 'D', 'C']
+    # rank_list = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K']
+    res = [Card(suit, rank) for suit in suit_list[:-1] for rank in rank_list[:-2]]
+    res.append(Card(4, 13))
+    res.append((Card(4, 14)))
     return res
 
 def rank2int(rank):

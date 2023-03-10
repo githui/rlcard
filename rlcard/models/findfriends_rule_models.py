@@ -62,8 +62,8 @@ class FindFriendsRuleAgent(object):
     def combine_cards(self, hand):
         '''Get optimal combinations of cards in hand
         '''
-        comb = {'rocket': [], 'bomb': [], 'trio': [], 'trio_chain': [],
-                'solo_chain': [], 'pair_chain': [], 'pair': [], 'solo': []}
+        comb = {'mixed': [], 'trio': [], 'trio_chain': [],
+                 'pair_chain': [], 'pair': [], 'solo': []}
         # 1. pick rocket
         if hand[-2:] == 'BR':
             comb['rocket'].append('BR')
@@ -156,7 +156,7 @@ class FindFriendsRuleAgent(object):
 
 
 class FindFriendsRuleModel(Model):
-    ''' Dou Dizhu Rule Model version 1
+    ''' Rule Model version 1
     '''
 
     def __init__(self):
@@ -169,7 +169,7 @@ class FindFriendsRuleModel(Model):
 
     @property
     def agents(self):
-        ''' Get a list of agents for each position in a the game
+        ''' Get a list of agents for each position in the game
 
         Returns:
             agents (list): A list of agents

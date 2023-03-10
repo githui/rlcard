@@ -18,6 +18,5 @@ from rlcard.games.findfriends.player import FindfriendsPlayer as Playe
 from rlcard.agents.dqn_agent import DQNAgent
 np_random = np.random.RandomState()
 env=rlcard.make('findfriends')
-agent=DQNAgent()
-env.set_agents(agent)
+
 env.run()

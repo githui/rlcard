@@ -10,9 +10,10 @@ class Card:
     '''
     suit = None
     rank = None
-    valid_suit = ['S', 'H', 'D', 'C', 'BJ', 'RJ']
-    valid_rank = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K','A']
-
+    # valid_suit = ['S', 'H', 'D', 'C', 'BJ', 'RJ']
+    # valid_rank = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K','A']
+    valid_suit = [0,1,2,3,4]
+    valid_rank = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
     def __init__(self, suit, rank):
         ''' Initialize the suit and rank of a card
 
