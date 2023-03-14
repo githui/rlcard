@@ -30,7 +30,7 @@ class FindfriendsEnv(Env):
             state (dict): dict of original state
         '''
         current_hand = state['current_hand']
-        others_hand = state['others_hand']
+        # others_hand = state['others_hand']
 
         # last_action = ''
         # # if len(state['trace']) != 0:
@@ -42,19 +42,19 @@ class FindfriendsEnv(Env):
         #
         # last_9_actions = _action_seq2array(_process_action_seq(state['trace']))
 
-        if state['self'] == 0: # landlord
-            landlord_up_played_cards = _cards2array(state['played_cards'][2])
-            landlord_down_played_cards = _cards2array(state['played_cards'][1])
-            # landlord_up_num_cards_left = _get_one_hot_array(state['num_cards_left'][2], 26)
-            # landlord_down_num_cards_left = _get_one_hot_array(state['num_cards_left'][1], 26)
-            obs = np.concatenate((current_hand,
-                                  others_hand,
-                                  # last_action,
-                                  landlord_up_played_cards,
-                                  landlord_down_played_cards,
+        # if state['self'] == 0: # landlord
+        #     landlord_up_played_cards = _cards2array(state['played_cards'][2])
+        #     landlord_down_played_cards = _cards2array(state['played_cards'][1])
+        #     # landlord_up_num_cards_left = _get_one_hot_array(state['num_cards_left'][2], 26)
+        #     # landlord_down_num_cards_left = _get_one_hot_array(state['num_cards_left'][1], 26)
+        obs = np.concatenate((current_hand,
+                                  # others_hand,
+                                  # # last_action,
+                                  # landlord_up_played_cards,
+                                  # landlord_down_played_cards,
                                   # landlord_up_num_cards_left,
                                   ))
-        # else:
+        # # else:
         #     landlord_played_cards = _cards2array(state['played_cards'][0])
         #     # for i, action in reversed(state['trace']):
         #     #     if i == 0:
