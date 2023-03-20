@@ -56,9 +56,9 @@ def _print_state(state, raw_legal_actions, action_record):
         print('>> Player', pair[0], 'chooses', pair[1])
 
     print('\n=============   Dealer Hand   ===============')
-    print_card(state['dealer hand'])
+    # print_card(state['dealer hand'])
 
-    num_players = len(state) - 3
+    num_players = 6
 
     for i in range(num_players):
         print('===============   Player {} Hand   ==============='.format(i))
