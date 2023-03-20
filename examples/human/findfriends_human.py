@@ -3,11 +3,11 @@
 
 import rlcard
 from rlcard.agents import RandomAgent as RandomAgent
-from rlcard.agents.human_agents import findfriends_human_agent as HumanAgent
+from rlcard.agents.human_agents.findfriends_human_agent import HumanAgent
 from rlcard.utils.utils import print_card
 
 # Make environment
-num_players = 2
+num_players = 6
 env = rlcard.make(
     'findfriends',
     config={
